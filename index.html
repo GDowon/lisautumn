@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Lis:ight_autumn_game</title>
-    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="format-detection" content="telephone=no">
@@ -65,7 +65,7 @@
         };
 
         var loadintT = document.getElementById("loadingText");
-        var loadintGif = document.getElementById("loadingImg")
+        var loadintGif = document.getElementById("loadingImg");
         setTimeout(function () {
             loadintGif.remove();
             loadintT.style.display = "";
@@ -89,7 +89,7 @@
                 if (!loadintT) {
                     return;
                 }
-                loadintT.innerHTML = '문정 밭 가는 중......' + parseInt(tempSeconds) + '%';
+                loadintT.innerHTML = '문정이네 추수 준비 중......' + parseInt(tempSeconds) + '%';
 
                 switch (tempSeconds) {
                     case 20:
@@ -119,10 +119,11 @@
                         }
                         break;
                 }
-                if (tempSeconds > 100) {
+                if (tempSeconds >= 100) {
                     clearInterval(timer);
                     tempSeconds = 100;
-                    loadintT.innerHTML = '문정 밭 가는 중......' + parseInt(tempSeconds) + '%';
+                    loadintT.innerHTML = '문정이네 추수 준비 끝!' + parseInt(tempSeconds) + '%';
+                    startGame(); // Start the game once loading is complete
                 }
             }, t * 1000);
         }
@@ -133,9 +134,16 @@
                 tempSeconds = percent;
             }
         }
+
+        function startGame() {
+            // This function should contain the logic to start your game
+            // For example, you might want to hide the loading text and display the game area
+            document.getElementById("block-Box").style.display = "none"; // Hide the loading overlay
+            // Add any additional game initialization code here
+            window.boot(); // Assuming window.boot() is the function to start the game
+        }
     </script>
 
-    <script src="src/settings.js" charset="utf-8"></script>
     <script src="src/extraSettings.js" charset="utf-8"></script>
     <script src="main.js" charset="utf-8"></script>
 
